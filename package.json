@@ -1,0 +1,28 @@
+{
+  "name": "css-frameworks-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volvojakobsen/css-frameworks-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/volvojakobsen/css-frameworks-project/issues"
+  },
+  "homepage": "https://github.com/volvojakobsen/css-frameworks-project#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.1.0",
+    "sass": "^1.54.5"
+  }
+}
