@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../src/scss/custom.scss" />
-    <title>Title</title>
+    <script src="./js/index.mjs" type="module" defer></script>
+    <link rel="stylesheet" href="dist/css/custom.css" />
+    <title>Boomer Forum | login</title>
   </head>
-  <body>
+  <body class="min-vh-100 d-flex flex-column">
     <div class="container">
       <header
         class="d-flex flexwrap justify-content-center py-3 mb-4 border-bottom"
@@ -33,6 +34,20 @@
           </svg>
           <span class="fs-4">Boomer Forum</span>
         </a>
+        <form>
+          <div class="mb-4">
+            <div class="d-flex flex-row s-1">
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="search"
+              />
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </form>
         <ul class="nav nav-pills">
           <li class="nav-item">
             <a href="index.html" class="nav-link">HOME</a>
@@ -47,9 +62,11 @@
       </header>
     </div>
     <main>
-      <div class="container h-center">
-        <form action="/profile-page.html" id="register_form">
-          <div class="mb-3 d-flex flex-column o-center" style="height: 80vh">
+      <div class="container text-center">
+        <form id="login_form">
+          <div
+            class="mb-3 d-flex flex-column justify-content-center align-items-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -65,34 +82,14 @@
                 d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4h-8zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396H5.062z"
               />
             </svg>
-            <h1>please register</h1>
-            <p class="my-1">username must be at least 8 characters long</p>
+            <h1>please login</h1>
             <div
-              class="d-flex my-3 align-items-center justify-content-center"
-              style="width: 50%"
-            >
-              <input
-                type="name"
-                name="name"
-                class="form-control register_username"
-                id="exampleUserName"
-                aria-describedby="emailHelp"
-                minlength="8"
-                placeholder="username"
-                required
-              />
-            </div>
-            <p class="my-1">
-              email must be a valid noroff student mail address
-            </p>
-            <div
-              class="d-flex my-3 align-items-center justify-content-center"
-              style="width: 50%"
+              class="d-flex my-3 col-4 align-items-center justify-content-center"
             >
               <input
                 type="email"
                 name="email"
-                class="form-control register_email"
+                class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -101,11 +98,11 @@
               />
             </div>
             <p class="my-1">password must be at least 8 characters long</p>
-            <div class="d-flex my-1" style="width: 50%">
+            <div class="d-flex my-1 col-4">
               <input
                 type="password"
                 name="password"
-                class="form-control register_password"
+                class="form-control"
                 id="exampleInputPassword1"
                 minlength="8"
                 aria-describedby="passwordHelp"
@@ -124,19 +121,19 @@
               >
             </div>
             <div>
-              <button type="submit" class="btn btn-primary register_submit">
-                Submit
-              </button>
-              <button type="button" class="btn btn-outline-primary">
-                Register
-              </button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <a href="./register.html"
+                ><button type="button" class="btn btn-outline-primary">
+                  Register
+                </button></a
+              >
             </div>
           </div>
         </form>
       </div>
     </main>
     <footer>
-      <div class="container">
+      <div class="container text-center">
         <p class="copyright">Copyright © 2022 Boomer Forum</p>
       </div>
     </footer>
