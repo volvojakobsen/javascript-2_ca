@@ -1,5 +1,7 @@
 import { setRegisterFormListener } from "./handlers/register.mjs";
 import { setLoginFormListener } from "./handlers/login.mjs";
+import * as post from "./api/posts/index.mjs";
+
 
 
 
@@ -11,3 +13,4 @@ if (path === `/login.html`) {
 else if (path === `/register.html`) {
     setRegisterFormListener();
 }
+
