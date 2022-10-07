@@ -1,4 +1,6 @@
-import * as listeners from "./handlers/index.mjs"
+import * as listeners from "./handlers/index.mjs";
+import * as postMethods from "./api/posts/index.mjs";
+import * as templates from "./templates/index.mjs";
 
 
 export default function ruter() {
@@ -20,6 +22,12 @@ export default function ruter() {
     }
 
 
+}
+
+async function test() {
+    const posts = await postMethods.getPosts();
+    const container = document.querySelector(".displayPosts");
+    templates.renderPostTemplates(posts, container);
 }
 
 
