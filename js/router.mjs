@@ -30,6 +30,7 @@ export default function router() {
             return;
         case `/posts.html`:
             listeners.displayPostsListener()
+            //listeners.setSearchPostListener()
             console.log(`posts`)
             return;
         case `/profile.html`:

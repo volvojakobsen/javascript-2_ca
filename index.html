@@ -22,18 +22,12 @@
         </svg>
         <span class="fs-4">Boomer Forum</span>
       </a>
-      <form>
-        <div class="mb-4">
-          <div class="d-flex flex-row s-1">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-              placeholder="search">
-            <button type="submit" class="btn btn-primary">Search</button>
-          </div>
-        </div>
-      </form>
       <ul class="nav nav-pills">
         <li class="nav-item">
           <a href="./index.html" class="nav-link">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a href="./posts.html" class="nav-link">POSTS</a>
         </li>
         <li class="nav-item">
           <a href="./profile.html" class="nav-link">PROFILE</a>
@@ -46,50 +40,13 @@
   </div>
   <div>
     <main>
-      <form class="createPost">
-        <div class="container d-flex flex-column front-form my-3">
-          <h1 class="text-center">Write a new post</h1>
-          <label for="subject" class="form-label">Subject</label>
-          <input type="text" name="title" class="form-control form-title" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <textarea name="body" id="message" cols="30" rows="10" class="form__input form-body text_area mb-3"
-            placeholder="message"></textarea>
-          <button type="submit" class="btn mb-3 btn-primary">Submit</button>
-        </div>
-      </form>
-  </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Post</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="updatePost">
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Subject:</label>
-              <input type="text" name="title" class="form-control update-title" id="recipient-name">
-            </div>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">post id:</label>
-              <input type="text" name="id" class="form-control update-id" id="recipient-name" readonly>
-            </div>
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label">Message:</label>
-              <textarea class="form-control update-body" name="body" id="message-text"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Update Post</button>
-        </div>
+      <div class="container text-center">
+        <h1>welcome to the Boomer Forum!</h1>
+        <h2 class="my-5">Please login or register</h2>
+        <a href="./login.html"><button class="btn btn-primary col-2">LOGIN</button></a>
+        <p>or</p>
+        <a href="./register.html"><button class="btn btn-primary col-2">REGISTER</button></a>
       </div>
-    </div>
-  </div></div>
-  </div>
-</div>
-  <div class="container posts displayPosts my-3"><div class="loader"></div></div>
   </main>
   <footer>
     <div class="container text-center">

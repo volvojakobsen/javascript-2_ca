@@ -5,3 +5,4 @@ export * from "./updatePost.mjs";
 export * from "./displayPosts.mjs";
 export * from "./removePost.mjs";
 export * from "./findAndDisplayUser.mjs";
+export * from "./search.mjs";
