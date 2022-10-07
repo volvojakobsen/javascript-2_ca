@@ -1,4 +1,5 @@
 import { API_SOCIAL_URL } from "../constants.mjs";
+import * as storage from "../../handlers/storage/index.mjs"
 
 const action = "/auth/register";
 const method = "post";
@@ -15,6 +16,7 @@ export async function register(profile) {
     })
 
     const result = await response.json();
+    storage.save("password", result.password);
     alert("You are now registered");
     return result;
 }

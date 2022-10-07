@@ -46,13 +46,15 @@
   </div>
   <div>
     <main>
-      <form class="updatePost">
+      <form id="updatePost">
         <div class="container d-flex flex-column front-form my-3">
           <h1 class="text-center">Write a new post</h1>
           <label for="subject" class="form-label">Subject</label>
           <input type="text" name="title" class="form-control form-title" id="exampleInputEmail1" aria-describedby="emailHelp" />
           <textarea name="body" id="message" cols="30" rows="10" class="form__input form-body text_area mb-3"
             placeholder="message"></textarea>
+          <div class="help">id:</div>
+          <input type="text" name="id" class="form-control form-title" id="exampleInputEmail1" aria-describedby="emailHelp" />
           <button type="submit" class="btn mb-3 btn-primary">Submit</button>
         </div>
       </form>
@@ -89,7 +91,10 @@
   </div></div>
   </div>
 </div>
-  <div class="container posts my-3"><div class="displayPosts"></div><div class="loader"></div></div>
+<div class="container d-flex justify-content-center front-form my-3">
+  <a href="posts.html"><button type="button" class="btn btn-primary my-4 col-10">View post page</button>
+  </a>
+</div>
   </main>
   <footer>
     <div class="container text-center">

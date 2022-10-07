@@ -1,8 +1,8 @@
 import { createPost } from "../api/posts/index.mjs";
 
 
-export function setLoginFormListener() {
-    const form = document.querySelector(".createPost");
+export function setCreatePostFormListener() {
+    const form = document.querySelector("#createPost");
 
     if (form) {
         form.addEventListener("submit", (event) => {
@@ -10,7 +10,6 @@ export function setLoginFormListener() {
             const form = event.target;
             const formData = new FormData(form);
             const post = Object.fromEntries(formData.entries());
-            console.log(profile);
             createPost(post);
         })
     }
