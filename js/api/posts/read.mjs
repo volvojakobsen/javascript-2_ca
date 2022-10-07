@@ -3,10 +3,11 @@ import { API_SOCIAL_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
 const action = "/posts";
+const string = "/?_author=true&_comments=true&reactions=true";
 
 export async function getPosts() {
 
-    const getPostURL = `${API_SOCIAL_URL}${action}`;
+    const getPostURL = `${API_SOCIAL_URL}${action}${string}`;
 
     const response = await authFetch(getPostURL)
 
