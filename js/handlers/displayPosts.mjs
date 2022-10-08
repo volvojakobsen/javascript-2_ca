@@ -2,7 +2,9 @@ import * as postMethods from "../api/posts/index.mjs";
 import { load } from "../handlers/storage/index.mjs";
 
 let limit = 20;
-
+/**
+ * displays posts from another fetch function, if the user enters search in search field it will display the search result from the json response.
+ */
 export async function displayPostsListener() {
   const posts = await postMethods.getPosts();
   const searchForm = document.querySelector("#searchForm");
@@ -108,6 +110,9 @@ export async function displayPostsListener() {
     }
 
   }
+  /**
+   * raises the limit for the amount of posts displayed, and loads in more results.
+   */
   const loadMore = document.querySelector("#loadMore");
   loadMore.addEventListener("click", (e) => {
     e.preventDefault();

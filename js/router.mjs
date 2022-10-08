@@ -2,7 +2,10 @@
 import * as listeners from "./handlers/index.mjs";
 
 
-
+/**
+ * switches listeners based on the users location path
+ * @returns what listener should be active
+ */
 export default function router() {
     const path = location.pathname;
 

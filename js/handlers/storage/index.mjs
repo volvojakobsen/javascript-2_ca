@@ -1,7 +1,17 @@
+
+/**
+ * stores a key and value in local storage.
+ * @param {string} key for value being stored
+ * @param {string} value being stored
+ */
 export function save(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
-
+/**
+ * gets value from local storage
+ * @param {string} key stored
+ * @returns stored value.
+ */
 export function load(key) {
     try {
         const value = localStorage.getItem(key);
@@ -11,7 +21,10 @@ export function load(key) {
     }
 
 }
-
+/**
+ * deletes value in local storage.
+ * @param {string} key being deleted
+ */
 export function remove(key) {
     localStorage.removeItem(key);
 }

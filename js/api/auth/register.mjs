@@ -3,7 +3,11 @@ import * as storage from "../../handlers/storage/index.mjs"
 
 const action = "/auth/register";
 const method = "post";
-
+/**
+ * sends register info to API. then waiting for response.
+ * @param {string} profile from input-fields in form.
+ * @returns the jason response as "result"
+ */
 export async function register(profile) {
     const registerURL = API_SOCIAL_URL + action;
 
@@ -16,7 +20,6 @@ export async function register(profile) {
     })
 
     const result = await response.json();
-    storage.save("password", result.password);
     alert("You are now registered");
     return result;
 }

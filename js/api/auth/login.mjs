@@ -3,7 +3,10 @@ import * as storage from "../../handlers/storage/index.mjs"
 
 const action = "/auth/login";
 const method = "post";
-
+/**
+ * sends login information to the API then waiting for a response, stores response and saves userinfo and JWT token in local storage 
+ @param {string} profile from input-fields in form.
+ */
 export async function login(profile) {
     const loginURL = API_SOCIAL_URL + action;
 

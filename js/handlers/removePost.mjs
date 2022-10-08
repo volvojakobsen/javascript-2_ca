@@ -1,6 +1,8 @@
 import { getPost, removePost } from "../api/posts/index.mjs";
 
-
+/**
+ * listens for submit on delete post form. then passes values to delete function, and redirects user.
+ */
 export async function setDeletePostListener() {
     const form = document.querySelector("#deletePost");
 

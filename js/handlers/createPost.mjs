@@ -1,6 +1,8 @@
 import { createPost } from "../api/posts/index.mjs";
 
-
+/**
+ * passes user input values from post form to a fetch function, and redirects user to posts page.
+ */
 export function setCreatePostFormListener() {
     const form = document.querySelector("#createPost");
 

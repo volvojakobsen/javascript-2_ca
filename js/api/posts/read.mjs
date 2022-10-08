@@ -16,7 +16,11 @@ export async function getPosts() {
 
     return await response.json();
 };
-
+/**
+ * 
+ * @param {number} id post id from array
+ * @returns json response
+ */
 export async function getPost(id) {
     if (!id) {
         throw new Error("get requires a post id");

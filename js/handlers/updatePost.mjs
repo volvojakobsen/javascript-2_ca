@@ -1,6 +1,8 @@
 import { getPost, updatePost } from "../api/posts/index.mjs";
 
-
+/**
+ * listens for submit event on update post form. then passes input values to update-post function and redirects user.
+ */
 export async function setUpdatePostListener() {
     const form = document.querySelector("#updatePost");
 
