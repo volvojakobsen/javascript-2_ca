@@ -4,7 +4,7 @@ import * as listeners from "./handlers/index.mjs";
 
 /**
  * switches listeners based on the users location path
- * @returns {function name()} what listener should be active
+ * @returns {function} what listener should be active
  * @example 
  * ```js
  * //the user is at location: "./login.html"

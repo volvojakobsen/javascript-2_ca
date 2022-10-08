@@ -19,7 +19,7 @@ export async function getPosts() {
 /**
  * 
  * @param {number} id post id from array
- * @returns json response
+ * @returns {Array} json response
  */
 export async function getPost(id) {
     if (!id) {
