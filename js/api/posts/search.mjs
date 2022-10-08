@@ -1,3 +1,25 @@
+
+export function search(event) {
+    event.preventDefault();
+
+    const searchString = document.getElementById("searchInput").value;
+
+    const searchResult = fetchedPosts.filter(
+        (post) =>
+            post.title.includes(searchString) ||
+            post.body.includes(searchString) ||
+            post.author.name.includes(searchString)
+    );
+    postsContainer.innerHTML = "";
+
+    displayPosts(searchResult);
+}
+
+
+
+
+
+
 /*
 
 export function linearSearch(list, value) {

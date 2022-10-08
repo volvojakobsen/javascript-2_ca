@@ -1,4 +1,30 @@
+
 /*
+import * as display from "./displayPosts.mjs";
+
+export function search(event) {
+    event.preventDefault();
+
+    const searchString = document.getElementById("searchInput").value;
+
+    const searchResult = fetchedPosts.filter(
+        (post) =>
+            post.title.includes(searchString) ||
+            post.body.includes(searchString) ||
+            post.author.name.includes(searchString)
+    );
+    postsContainer.innerHTML = "";
+
+    display.displayPosts(searchResult);
+    console.log(searchResult);
+}
+
+
+
+*/
+
+/*
+
 import { getPosts } from "../api/posts/read.mjs";
 import { linearSearch } from "../api/posts/search.mjs";
 

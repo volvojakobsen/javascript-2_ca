@@ -12,6 +12,7 @@ export async function getPosts() {
     const getPostURL = `${API_SOCIAL_URL}${action}${string}`;
 
     const response = await authFetch(getPostURL)
+    /*
     if (form.length >= 1) {
         form.addEventListener("keyup", (e) => {
             console.log(e.target.value);
@@ -24,6 +25,7 @@ export async function getPosts() {
             })
         })
     } return await filteredResponse;
+    */
 
 
     return await response.json();
