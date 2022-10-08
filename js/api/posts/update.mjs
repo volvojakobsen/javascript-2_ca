@@ -7,7 +7,7 @@ const method = "put";
 /**
  * sends the user-input from update-post form to API as a put request.
  * @param {string} postData from input fields in form.
- * @returns json response.
+ * @returns {Array} json response.
  */
 export async function updatePost(postData) {
     if (!postData.id) {

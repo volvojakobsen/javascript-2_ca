@@ -7,7 +7,7 @@ const method = "delete";
 /**
  * passes a id to the API as a delete request.
  * @param {number} id from post array
- * @returns json response
+ * @returns {Array} json response
  */
 export async function removePost(id) {
     if (!id) {

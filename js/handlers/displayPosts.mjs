@@ -3,7 +3,7 @@ import { load } from "../handlers/storage/index.mjs";
 
 let limit = 20;
 /**
- * displays posts from another fetch function, if the user enters search in search field it will display the search result from the json response.
+ * displays posts from result from another fetch function, if the user enters search in search field it will display the search result from the json response.
  */
 export async function displayPostsListener() {
   const posts = await postMethods.getPosts();

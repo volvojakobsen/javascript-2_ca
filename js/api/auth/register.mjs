@@ -6,7 +6,7 @@ const method = "post";
 /**
  * sends register info to API. then waiting for response.
  * @param {string} profile from input-fields in form.
- * @returns the jason response as "result"
+ * @returns {Array} the jason response as "result"
  */
 export async function register(profile) {
     const registerURL = API_SOCIAL_URL + action;

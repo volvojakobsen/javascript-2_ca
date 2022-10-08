@@ -7,7 +7,7 @@ const method = "post";
 /**
  * sends the users input to the post API and fetching the result.
  * @param {string} postData from input fields in form.
- * @returns json response.
+ * @returns {Array} json response.
  */
 export async function createPost(postData) {
     const createPostURL = API_SOCIAL_URL + action;

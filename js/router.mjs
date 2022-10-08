@@ -4,7 +4,16 @@ import * as listeners from "./handlers/index.mjs";
 
 /**
  * switches listeners based on the users location path
- * @returns what listener should be active
+ * @returns {function name()} what listener should be active
+ * @example 
+ * ```js
+ * //the user is at location: "./login.html"
+ * switch (path) {
+ *     case `/login.html`:
+ *          listeners.setLoginFormListener()
+ *          return;
+ * // the listeners.setLoginFormListener() function will now be active.
+ * ```
  */
 export default function router() {
     const path = location.pathname;
