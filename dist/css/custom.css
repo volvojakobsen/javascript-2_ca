@@ -10842,5 +10842,8 @@ main {
     transform: rotate(360deg);
   }
 }
+.id-dark {
+  opacity: 0.6;
+}
 
 /*# sourceMappingURL=custom.css.map */

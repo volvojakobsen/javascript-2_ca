@@ -11,6 +11,8 @@ export function setCreatePostFormListener() {
             const formData = new FormData(form);
             const post = Object.fromEntries(formData.entries());
             createPost(post);
+            alert("your post has been created.");
+            location.href = `/posts.html`;
         })
     }
 

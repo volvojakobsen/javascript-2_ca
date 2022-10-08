@@ -21,6 +21,8 @@ export async function setUpdatePostListener() {
             const post = Object.fromEntries(formData.entries());
             post.id = id;
             updatePost(post);
+            alert("your post has been updated.");
+            location.href = `/posts.html`
         })
     }
 

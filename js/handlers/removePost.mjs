@@ -14,7 +14,6 @@ export async function setDeletePostListener() {
         let name = params.get("id");
         let cleanID = name.replaceAll("'", "");
 
-        console.log(cleanID);
 
         form.id.value = cleanID;
 
@@ -26,7 +25,8 @@ export async function setDeletePostListener() {
             const post = Object.fromEntries(formData.entries());
             post.id = id;
             removePost(cleanID);
-            console.log(id);
+            alert("the post has been deleted");
+            location.href = `/posts.html`;
         })
     }
 
