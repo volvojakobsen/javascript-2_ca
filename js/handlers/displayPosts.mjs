@@ -17,9 +17,9 @@ export async function displayPostsListener() {
         post.body.toLowerCase().includes(searchString) ||
         post.author.name.toLowerCase().includes(searchString)
     );
+    console.log(searchResult);
     container.innerHTML = "";
     for (let i = 0; i < searchResult.length; i++) {
-      console.log(searchResult[i].body);
       if (i === limit) {
         break;
       }
@@ -111,3 +111,15 @@ export async function displayPostsListener() {
   }
 
 }
+
+const loadMore = document.querySelector("#loadMore");
+
+loadMore.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  limit += 20;
+  console.log(limit);
+  displayPostsListener();
+})
+
+console.log(limit);

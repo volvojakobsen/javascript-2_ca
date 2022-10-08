@@ -52,39 +52,12 @@
             <a href="createPost.html"><button type="button" class="btn btn-primary my-4 col-10">Create a new post</button>
             </a>
         </div>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Post</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="updatePost">
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Subject:</label>
-              <input type="text" name="title" class="form-control update-title" id="recipient-name">
-            </div>
-            <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">post id:</label>
-              <input type="text" name="id" class="form-control update-id" id="recipient-name" readonly>
-            </div>
-            <div class="mb-3">
-              <label for="message-text" class="col-form-label">Message:</label>
-              <textarea class="form-control update-body" name="body" id="message-text"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Update Post</button>
-        </div>
-      </div>
-    </div>
-  </div></div>
   </div>
 </div>
   <div class="container posts displayPosts my-3" id="posts"><div class="loader"></div></div>
+  <div class="container my-3"><div class="container d-flex justify-content-center front-form my-3">
+  <button type="button" id="loadMore" class="btn btn-primary my-4 col-10">load 20 more posts</button>
+</div></div>
   </main>
   <footer>
     <div class="container text-center">
