@@ -39,8 +39,9 @@ export default function router() {
             listeners.isUserLoggedIn()
             return;
         case `/posts.html`:
-            listeners.displayPostsListener()
             listeners.isUserLoggedIn()
+            listeners.displayPostsListener()
+
             return;
         case `/profile.html`:
             listeners.getUser()
