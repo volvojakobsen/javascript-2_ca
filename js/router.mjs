@@ -21,7 +21,6 @@ export default function router() {
     switch (path) {
         case `/login.html`:
             listeners.setLoginFormListener()
-            listeners.isUserLoggedIn()
             return;
         case `/register.html`:
             listeners.setRegisterFormListener()
@@ -41,11 +40,15 @@ export default function router() {
         case `/posts.html`:
             listeners.isUserLoggedIn()
             listeners.displayPostsListener()
-
+            listeners.idForm()
             return;
         case `/profile.html`:
             listeners.getUser()
             listeners.isUserLoggedIn()
+            return;
+        case `/post.html`:
+            listeners.isUserLoggedIn()
+            listeners.displayPostListener()
             return;
     }
 

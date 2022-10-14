@@ -3,7 +3,7 @@ import { API_SOCIAL_URL } from "../constants.mjs";
 import { authFetch } from "../authFetch.mjs";
 
 const action = "/posts";
-const string = "/?_author=true&_comments=true&reactions=true";
+const string = "?_author=true&_comments=true&reactions=true";
 const form = document.querySelector("#searchInput");
 let response = [];
 
@@ -26,7 +26,7 @@ export async function getPost(id) {
         throw new Error("get requires a post id");
     }
 
-    const getPostURL = `${API_SOCIAL_URL}${action}/${id}`;
+    const getPostURL = `${API_SOCIAL_URL}${action}/${id}${string}`;
 
     const response = await authFetch(getPostURL)
 

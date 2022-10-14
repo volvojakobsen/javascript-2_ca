@@ -18,7 +18,10 @@ export async function displayPostsListener() {
         post.title.toLowerCase().includes(searchString) ||
         post.body.toLowerCase().includes(searchString) ||
         post.author.name.toLowerCase().includes(searchString)
+
     );
+
+
 
     container.innerHTML = "";
     for (let i = 0; i < searchResult.length; i++) {
@@ -65,6 +68,7 @@ export async function displayPostsListener() {
 
 
   })
+
   const container = document.getElementById("posts");
 
   container.innerHTML = "";
