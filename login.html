@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script src="./js/index.mjs" type="module" defer></script>
     <link rel="stylesheet" href="dist/css/custom.css" />
     <title>Boomer Forum | login</title>
   </head>
@@ -34,36 +34,27 @@
           </svg>
           <span class="fs-4">Boomer Forum</span>
         </a>
-        <form>
-          <div class="mb-4">
-            <div class="d-flex flex-row s-1">
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                placeholder="search"
-              />
-              <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-          </div>
-        </form>
         <ul class="nav nav-pills">
           <li class="nav-item">
-            <a href="index.html" class="nav-link">HOME</a>
+            <a href="login.html" class="nav-link">HOME</a>
           </li>
           <li class="nav-item">
-            <a href="profile-page.html" class="nav-link">PROFILE</a>
+            <a href="login.html" class="nav-link">POSTS</a>
           </li>
           <li class="nav-item">
-            <a href="login-page.html" class="nav-link active">LOGIN</a>
+            <a href="login.html" class="nav-link">PROFILE</a>
+          </li>
+          <li class="nav-item">
+            <a href="login.html" class="nav-link active" id="login-nav"
+              >LOGIN</a
+            >
           </li>
         </ul>
       </header>
     </div>
     <main>
       <div class="container text-center">
-        <form action="/profile-page.html" id="login_form">
+        <form id="login_form">
           <div
             class="mb-3 d-flex flex-column justify-content-center align-items-center"
           >
@@ -122,7 +113,7 @@
             </div>
             <div>
               <button type="submit" class="btn btn-primary">Submit</button>
-              <a href="register.html"
+              <a href="./register.html"
                 ><button type="button" class="btn btn-outline-primary">
                   Register
                 </button></a
@@ -137,7 +128,5 @@
         <p class="copyright">Copyright © 2022 Boomer Forum</p>
       </div>
     </footer>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/login.mjs"></script>
   </body>
 </html>

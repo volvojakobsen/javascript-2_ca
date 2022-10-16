@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <script src="./js/index.mjs" type="module" defer></script>
   <link rel="stylesheet" href="dist/css/custom.css" />
-  <title>Boomer Forum | Home</title>
+  <title>Boomer Forum | Posts</title>
 </head>
 <body class="min-vh-100 d-flex flex-column">
   <div class="container-xl">
@@ -24,9 +24,6 @@
       </a>
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a href="./index.html" class="nav-link">HOME</a>
-        </li>
-        <li class="nav-item">
           <a href="./posts.html" class="nav-link">POSTS</a>
         </li>
         <li class="nav-item">
@@ -40,13 +37,43 @@
   </div>
   <div>
     <main>
-      <div class="container text-center">
-        <h1>welcome to the Boomer Forum!</h1>
-        <h2 class="my-5">Please login or register</h2>
-        <a href="./login.html"><button class="btn btn-primary col-2">LOGIN</button></a>
-        <p>or</p>
-        <a href="./register.html"><button class="btn btn-primary col-2">REGISTER</button></a>
+      <div class="container">
+        <form id="searchForm">
+          <div class="mb-4">
+            <div class="d-flex flex-row s-1">
+              <input type="text" class="form-control" id="searchInput" aria-describedby="emailHelp"
+                placeholder="search">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </div>
+        </form>
       </div>
+      <div class="container">
+        <form id="searchByID">
+          <div class="mb-4 col-4">
+            <div class="d-flex flex-row s-1">
+              <input type="number" name="id" class="form-control" id="idInput" aria-describedby="emailHelp"
+                placeholder="search">
+              <button type="submit" class="btn btn-primary">ID search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+        <div class="container d-flex justify-content-center front-form my-3">
+            <a href="createPost.html"><button type="button" class="btn btn-primary my-4 col-10">Create a new post</button>
+            </a>
+        </div>
+  </div>
+</div>
+<div class="container d-flex flex-column justify-content-center">
+  <h4>sort by:</h4>
+  <button type="button" class="btn btn-primary btn-sm" id="sortBTN">sort by updated</button>
+
+</div>
+  <div class="container posts displayPosts my-1" id="posts"><div class="loader"></div></div>
+  <div class="container my-3"><div class="container d-flex justify-content-center front-form my-3">
+  <button type="button" id="loadMore" class="btn btn-primary my-4 col-10">load 20 more posts</button>
+</div></div>
   </main>
   <footer>
     <div class="container text-center">

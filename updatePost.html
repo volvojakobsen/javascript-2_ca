@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <script src="./js/index.mjs" type="module" defer></script>
   <link rel="stylesheet" href="dist/css/custom.css" />
-  <title>Boomer Forum | Home</title>
+  <title>Boomer Forum | Update post</title>
 </head>
 <body class="min-vh-100 d-flex flex-column">
   <div class="container-xl">
@@ -40,13 +40,24 @@
   </div>
   <div>
     <main>
-      <div class="container text-center">
-        <h1>welcome to the Boomer Forum!</h1>
-        <h2 class="my-5">Please login or register</h2>
-        <a href="./login.html"><button class="btn btn-primary col-2">LOGIN</button></a>
-        <p>or</p>
-        <a href="./register.html"><button class="btn btn-primary col-2">REGISTER</button></a>
-      </div>
+      <form id="updatePost">
+        <div class="container d-flex flex-column front-form my-3">
+          <h1 class="text-center">Write a new post</h1>
+          <label for="subject" class="form-label">Subject</label>
+          <input type="text" name="title" class="form-control form-title" id="exampleInputEmail1" aria-describedby="emailHelp" />
+          <textarea name="body" id="message" cols="30" rows="10" class="form__input form-body text_area mb-3"
+            placeholder="message"></textarea>
+          <div class="help">id:</div>
+          <input type="text" name="id" class="form-control id-dark form-title" id="exampleInputEmail1" aria-describedby="emailHelp" readonly/>
+          <button type="submit" class="btn my-3 btn-primary">Submit</button>
+        </div>
+      </form>
+  </div>
+</div>
+<div class="container d-flex justify-content-center front-form my-3">
+  <a href="posts.html"><button type="button" class="btn btn-primary my-4 col-10">View post page</button>
+  </a>
+</div>
   </main>
   <footer>
     <div class="container text-center">
