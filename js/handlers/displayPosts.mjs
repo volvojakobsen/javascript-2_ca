@@ -77,9 +77,6 @@ export async function displayPostsListener() {
     })
 
 
-    console.log(filteredPosts);
-
-
     const searchForm = document.querySelector("#searchForm");
     searchForm.addEventListener("submit", (e) => {
       e.preventDefault();

@@ -1,5 +1,5 @@
 import * as postMethods from "../api/posts/index.mjs";
-import { load } from "../handlers/storage/index.mjs";
+
 
 const postContainer = document.querySelector(".post");
 /**
