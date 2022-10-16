@@ -30,31 +30,107 @@
 import { load } from "../handlers/storage/index.mjs";
 
 let limit = 20;
+
+const sortBTN = document.querySelector("#sortBTN");
+
 /**
  * displays posts from result from another fetch function, if the user enters search in search field it will display the search result from the json response.
  */
 export async function displayPostsListener() {
-  const posts = await postMethods.getPosts();
-  const searchForm = document.querySelector("#searchForm");
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  try {
+    let posts = await postMethods.getPosts();
+    const container = document.getElementById("posts");
 
-    const searchString = document.getElementById("searchInput").value.toLowerCase();
+    let filteredPosts = [];
+    /**
+     * sorts the posts when clicked.
+     */
+    sortBTN.addEventListener("click", (e) => {
+      e.preventDefault();
+      filteredPosts = posts.sort((a, b) => {
+        return new Date(a.updated) - new Date(b.updated)
+      });
+      /**
+       * displays the sorted posts
+       */
+      function printFilteredPosts() {
+        container.innerHTML = "";
+        for (let i = 0; i &lt; filteredPosts.length; i++) {
+          if (i === limit) {
+            break;
+          }
+          if (filteredPosts[i].author.name === load("name")) {
+            container.innerHTML += `&lt;div class="card mb-3 col-10">
+      &lt;div class="row g-0">
+        &lt;div class="col-md-4">
+          &lt;img src="${filteredPosts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
+        &lt;/div>
+        &lt;div class="col-md-8">
+          &lt;div class="card-body">
+            &lt;h2 class="card-title">${filteredPosts[i].author.name}&lt;/h2>
+            &lt;h5 class="card-title">${filteredPosts[i].title}&lt;/h5>
+            &lt;p class="card-text">${filteredPosts[i].body}&lt;/p>
+            &lt;p class="card-text">&lt;small class="text-muted">Last updated ${filteredPosts[i].updated}. id: ${filteredPosts[i].id}&lt;/small>&lt;/p>
+            &lt;div class="row">&lt;a href="deletePost.html?id=${filteredPosts[i].id}">&lt;button class="col-2 delete-button">&lt;p>&lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-octagon-fill" viewBox="0 0 16 16">
+            &lt;path d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zm-6.106 4.5L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+          &lt;/svg>Delete&lt;/p>&lt;/button>&lt;/a>&lt;a href="updatePost.html?id=${filteredPosts[i].id}">&lt;button type="button" class="btn btn-primary col-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">&lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+          &lt;path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+        &lt;/svg>Edit&lt;/button>&lt;/a>
+      &lt;/div>
+    &lt;/div>`
+          }
+          else {
+            container.innerHTML += `&lt;div class="card mb-3 col-10">
+      &lt;div class="row g-0">
+        &lt;div class="col-md-4">
+          &lt;img src="${filteredPosts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
+        &lt;/div>
+        &lt;div class="col-md-8">
+          &lt;div class="card-body">
+            &lt;h2 class="card-title">${filteredPosts[i].author.name}&lt;/h2>
+            &lt;h5 class="card-title">${filteredPosts[i].title}&lt;/h5>
+            &lt;p class="card-text">${filteredPosts[i].body}&lt;/p>
+            &lt;p class="card-text">&lt;small class="text-muted">Last updated ${filteredPosts[i].updated}. id: ${filteredPosts[i].id}&lt;/small>&lt;/p>
+            &lt;div class="row">
+      &lt;/div>
+    &lt;/div>`
+          }
 
-    const searchResult = posts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(searchString) ||
-        post.body.toLowerCase().includes(searchString) ||
-        post.author.name.toLowerCase().includes(searchString)
-    );
-
-    container.innerHTML = "";
-    for (let i = 0; i &lt; searchResult.length; i++) {
-      if (i === limit) {
-        break;
+        }
       }
-      if (searchResult[i].author.name === load("name")) {
-        container.innerHTML += `&lt;div class="card mb-3 col-10">
+      printFilteredPosts();
+
+
+
+    })
+
+
+    console.log(filteredPosts);
+
+
+    const searchForm = document.querySelector("#searchForm");
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const searchString = document.getElementById("searchInput").value.toLowerCase();
+
+      const searchResult = posts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchString) ||
+          post.body.toLowerCase().includes(searchString) ||
+          post.author.name.toLowerCase().includes(searchString)
+
+      );
+
+
+
+      container.innerHTML = "";
+      for (let i = 0; i &lt; searchResult.length; i++) {
+        if (i === limit) {
+          break;
+        }
+        if (searchResult[i].author.name === load("name")) {
+          container.innerHTML += `&lt;div class="card mb-3 col-10">
       &lt;div class="row g-0">
         &lt;div class="col-md-4">
           &lt;img src="${searchResult[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -72,9 +148,9 @@ export async function displayPostsListener() {
         &lt;/svg>Edit&lt;/button>&lt;/a>
       &lt;/div>
     &lt;/div>`
-      }
-      else {
-        container.innerHTML += `&lt;div class="card mb-3 col-10">
+        }
+        else {
+          container.innerHTML += `&lt;div class="card mb-3 col-10">
       &lt;div class="row g-0">
         &lt;div class="col-md-4">
           &lt;img src="${searchResult[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -88,20 +164,23 @@ export async function displayPostsListener() {
             &lt;div class="row">
       &lt;/div>
     &lt;/div>`
+        }
       }
-    }
 
 
-  })
-  const container = document.getElementById("posts");
+    })
 
-  container.innerHTML = "";
-  for (let i = 0; i &lt; posts.length; i++) {
-    if (i === limit) {
-      break;
-    }
-    if (posts[i].author.name === load("name")) {
-      container.innerHTML += `&lt;div class="card mb-3 col-10">
+    /**
+     * displays the posts
+     */
+    function printPosts() {
+      container.innerHTML = "";
+      for (let i = 0; i &lt; posts.length; i++) {
+        if (i === limit) {
+          break;
+        }
+        if (posts[i].author.name === load("name")) {
+          container.innerHTML += `&lt;div class="card mb-3 col-10">
     &lt;div class="row g-0">
       &lt;div class="col-md-4">
         &lt;img src="${posts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -119,9 +198,9 @@ export async function displayPostsListener() {
       &lt;/svg>Edit&lt;/button>&lt;/a>
     &lt;/div>
   &lt;/div>`
-    }
-    else {
-      container.innerHTML += `&lt;div class="card mb-3 col-10">
+        }
+        else {
+          container.innerHTML += `&lt;div class="card mb-3 col-10">
     &lt;div class="row g-0">
       &lt;div class="col-md-4">
         &lt;img src="${posts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -135,20 +214,30 @@ export async function displayPostsListener() {
           &lt;div class="row">
     &lt;/div>
   &lt;/div>`
+        }
+
+      }
     }
+    printPosts();
 
+
+
+
+    const loadMore = document.querySelector("#loadMore");
+    /**
+     * raises the limit for the amount of posts displayed, and loads in more results.
+     */
+    loadMore.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      limit += 20;
+
+      displayPostsListener();
+    })
+
+  } catch (error) {
+    container.innerHTML = `&lt;h2>There was a problem loading the posts. please try again later or contact the support staff.&lt;/h2>`
   }
-  /**
-   * raises the limit for the amount of posts displayed, and loads in more results.
-   */
-  const loadMore = document.querySelector("#loadMore");
-  loadMore.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    limit += 20;
-
-    displayPostsListener();
-  })
 
 }
 
@@ -164,13 +253,13 @@ export async function displayPostsListener() {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFetch">authFetch</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#displayPostsListener">displayPostsListener</a></li><li><a href="global.html#getPost">getPost</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#headers">headers</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removePost">removePost</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#setCreatePostFormListener">setCreatePostFormListener</a></li><li><a href="global.html#setDeletePostListener">setDeletePostListener</a></li><li><a href="global.html#setLoginFormListener">setLoginFormListener</a></li><li><a href="global.html#setRegisterFormListener">setRegisterFormListener</a></li><li><a href="global.html#setUpdatePostListener">setUpdatePostListener</a></li><li><a href="global.html#updatePost">updatePost</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#authFetch">authFetch</a></li><li><a href="global.html#createPost">createPost</a></li><li><a href="global.html#displayPostListener">displayPostListener</a></li><li><a href="global.html#displayPostsListener">displayPostsListener</a></li><li><a href="global.html#getPost">getPost</a></li><li><a href="global.html#getUser">getUser</a></li><li><a href="global.html#headers">headers</a></li><li><a href="global.html#idForm">idForm</a></li><li><a href="global.html#isUserLoggedIn">isUserLoggedIn</a></li><li><a href="global.html#load">load</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removePost">removePost</a></li><li><a href="global.html#save">save</a></li><li><a href="global.html#setCreatePostFormListener">setCreatePostFormListener</a></li><li><a href="global.html#setDeletePostListener">setDeletePostListener</a></li><li><a href="global.html#setLoginFormListener">setLoginFormListener</a></li><li><a href="global.html#setRegisterFormListener">setRegisterFormListener</a></li><li><a href="global.html#setUpdatePostListener">setUpdatePostListener</a></li><li><a href="global.html#updatePost">updatePost</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Oct 08 2022 21:23:26 GMT+0200 (sentraleuropeisk sommertid)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sun Oct 16 2022 14:49:33 GMT+0200 (sentraleuropeisk sommertid)
 </footer>
 
 <script> prettyPrint(); </script>

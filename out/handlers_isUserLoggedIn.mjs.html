@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api/auth/register.mjs</title>
+    <title>JSDoc: Source: handlers/isUserLoggedIn.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api/auth/register.mjs</h1>
+    <h1 class="page-title">Source: handlers/isUserLoggedIn.mjs</h1>
 
     
 
@@ -26,30 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { API_SOCIAL_URL } from "../constants.mjs";
-import * as storage from "../../handlers/storage/index.mjs"
+            <pre class="prettyprint source linenums"><code>import * as storage from "./storage/index.mjs";
 
-const action = "/auth/register";
-const method = "post";
+
+const loginButton = document.querySelector("#login-nav");
 /**
- * sends register info to API. then waiting for response.
- * @param {string} profile from input-fields in form.
- * @returns {Array} the jason response as "result"
+ * checks if the user is logged in, if not it will redirect to the login page.
  */
-export async function register(profile) {
-    const registerURL = API_SOCIAL_URL + action;
+export function isUserLoggedIn() {
+    if (storage.load("token")) {
+        loginButton.innerHTML = "LOGOUT";
+        loginButton.addEventListener("click", (e) => {
+            localStorage.clear();
+        })
 
-    const response = await fetch(registerURL, {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        method,
-        body: JSON.stringify(profile)
-    })
+    }
+    else {
+        console.log("no token");
+        if (location.href === "http://127.0.0.1:5500/login.html") {
 
-    const result = await response.json();
-    location.href = `login.html`;
-    return result;
+        }
+        else {
+            alert("You are not logged in!");
+            location.href = "./login.html";
+        }
+    }
 }</code></pre>
         </article>
     </section>

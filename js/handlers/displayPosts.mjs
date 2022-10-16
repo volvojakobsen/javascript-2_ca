@@ -9,25 +9,30 @@ const sortBTN = document.querySelector("#sortBTN");
  * displays posts from result from another fetch function, if the user enters search in search field it will display the search result from the json response.
  */
 export async function displayPostsListener() {
-  let posts = await postMethods.getPosts();
-  const container = document.getElementById("posts");
+  try {
+    let posts = await postMethods.getPosts();
+    const container = document.getElementById("posts");
 
-  let filteredPosts = [];
-
-  sortBTN.addEventListener("click", (e) => {
-    e.preventDefault();
-    filteredPosts = posts.sort((a, b) => {
-      return new Date(a.updated) - new Date(b.updated)
-    });
-
-    function printFilteredPosts() {
-      container.innerHTML = "";
-      for (let i = 0; i < filteredPosts.length; i++) {
-        if (i === limit) {
-          break;
-        }
-        if (filteredPosts[i].author.name === load("name")) {
-          container.innerHTML += `<div class="card mb-3 col-10">
+    let filteredPosts = [];
+    /**
+     * sorts the posts when clicked.
+     */
+    sortBTN.addEventListener("click", (e) => {
+      e.preventDefault();
+      filteredPosts = posts.sort((a, b) => {
+        return new Date(a.updated) - new Date(b.updated)
+      });
+      /**
+       * displays the sorted posts
+       */
+      function printFilteredPosts() {
+        container.innerHTML = "";
+        for (let i = 0; i < filteredPosts.length; i++) {
+          if (i === limit) {
+            break;
+          }
+          if (filteredPosts[i].author.name === load("name")) {
+            container.innerHTML += `<div class="card mb-3 col-10">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="${filteredPosts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -45,9 +50,9 @@ export async function displayPostsListener() {
         </svg>Edit</button></a>
       </div>
     </div>`
-        }
-        else {
-          container.innerHTML += `<div class="card mb-3 col-10">
+          }
+          else {
+            container.innerHTML += `<div class="card mb-3 col-10">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="${filteredPosts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -61,43 +66,43 @@ export async function displayPostsListener() {
             <div class="row">
       </div>
     </div>`
+          }
+
         }
-
       }
-    }
-    printFilteredPosts();
+      printFilteredPosts();
 
 
 
-  })
+    })
 
 
-  console.log(filteredPosts);
+    console.log(filteredPosts);
 
 
-  const searchForm = document.querySelector("#searchForm");
-  searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+    const searchForm = document.querySelector("#searchForm");
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    const searchString = document.getElementById("searchInput").value.toLowerCase();
+      const searchString = document.getElementById("searchInput").value.toLowerCase();
 
-    const searchResult = posts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(searchString) ||
-        post.body.toLowerCase().includes(searchString) ||
-        post.author.name.toLowerCase().includes(searchString)
+      const searchResult = posts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchString) ||
+          post.body.toLowerCase().includes(searchString) ||
+          post.author.name.toLowerCase().includes(searchString)
 
-    );
+      );
 
 
 
-    container.innerHTML = "";
-    for (let i = 0; i < searchResult.length; i++) {
-      if (i === limit) {
-        break;
-      }
-      if (searchResult[i].author.name === load("name")) {
-        container.innerHTML += `<div class="card mb-3 col-10">
+      container.innerHTML = "";
+      for (let i = 0; i < searchResult.length; i++) {
+        if (i === limit) {
+          break;
+        }
+        if (searchResult[i].author.name === load("name")) {
+          container.innerHTML += `<div class="card mb-3 col-10">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="${searchResult[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -115,9 +120,9 @@ export async function displayPostsListener() {
         </svg>Edit</button></a>
       </div>
     </div>`
-      }
-      else {
-        container.innerHTML += `<div class="card mb-3 col-10">
+        }
+        else {
+          container.innerHTML += `<div class="card mb-3 col-10">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="${searchResult[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -131,21 +136,23 @@ export async function displayPostsListener() {
             <div class="row">
       </div>
     </div>`
+        }
       }
-    }
 
 
-  })
+    })
 
-
-  function printPosts() {
-    container.innerHTML = "";
-    for (let i = 0; i < posts.length; i++) {
-      if (i === limit) {
-        break;
-      }
-      if (posts[i].author.name === load("name")) {
-        container.innerHTML += `<div class="card mb-3 col-10">
+    /**
+     * displays the posts
+     */
+    function printPosts() {
+      container.innerHTML = "";
+      for (let i = 0; i < posts.length; i++) {
+        if (i === limit) {
+          break;
+        }
+        if (posts[i].author.name === load("name")) {
+          container.innerHTML += `<div class="card mb-3 col-10">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="${posts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -163,9 +170,9 @@ export async function displayPostsListener() {
       </svg>Edit</button></a>
     </div>
   </div>`
-      }
-      else {
-        container.innerHTML += `<div class="card mb-3 col-10">
+        }
+        else {
+          container.innerHTML += `<div class="card mb-3 col-10">
     <div class="row g-0">
       <div class="col-md-4">
         <img src="${posts[i].media}" class="img-fluid rounded-start" alt="profile-picture">
@@ -179,25 +186,30 @@ export async function displayPostsListener() {
           <div class="row">
     </div>
   </div>`
+        }
+
       }
-
     }
+    printPosts();
+
+
+
+
+    const loadMore = document.querySelector("#loadMore");
+    /**
+     * raises the limit for the amount of posts displayed, and loads in more results.
+     */
+    loadMore.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      limit += 20;
+
+      displayPostsListener();
+    })
+
+  } catch (error) {
+    container.innerHTML = `<h2>There was a problem loading the posts. please try again later or contact the support staff.</h2>`
   }
-  printPosts();
-
-
-
-  /**
-   * raises the limit for the amount of posts displayed, and loads in more results.
-   */
-  const loadMore = document.querySelector("#loadMore");
-  loadMore.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    limit += 20;
-
-    displayPostsListener();
-  })
 
 }
 

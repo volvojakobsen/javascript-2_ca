@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api/auth/register.mjs</title>
+    <title>JSDoc: Source: handlers/idForm.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api/auth/register.mjs</h1>
+    <h1 class="page-title">Source: handlers/idForm.mjs</h1>
 
     
 
@@ -26,31 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { API_SOCIAL_URL } from "../constants.mjs";
-import * as storage from "../../handlers/storage/index.mjs"
-
-const action = "/auth/register";
-const method = "post";
+            <pre class="prettyprint source linenums"><code>const form = document.querySelector("#searchByID");
 /**
- * sends register info to API. then waiting for response.
- * @param {string} profile from input-fields in form.
- * @returns {Array} the jason response as "result"
+ * takes id input from user and redirects the user on submit event. the id is passed in the querystring of the new location
  */
-export async function register(profile) {
-    const registerURL = API_SOCIAL_URL + action;
+export function idForm() {
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    const response = await fetch(registerURL, {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        method,
-        body: JSON.stringify(profile)
+        location.href = `./post.html?id=${form.idInput.value}`;
     })
+}
 
-    const result = await response.json();
-    location.href = `login.html`;
-    return result;
-}</code></pre>
+</code></pre>
         </article>
     </section>
 

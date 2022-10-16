@@ -1,8 +1,10 @@
 import * as storage from "./storage/index.mjs";
-import { load } from "./storage/index.mjs";
+
 
 const loginButton = document.querySelector("#login-nav");
-
+/**
+ * checks if the user is logged in, if not it will redirect to the login page.
+ */
 export function isUserLoggedIn() {
     if (storage.load("token")) {
         loginButton.innerHTML = "LOGOUT";

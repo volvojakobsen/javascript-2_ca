@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api/auth/register.mjs</title>
+    <title>JSDoc: Source: handlers/DisplayPost.mjs</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api/auth/register.mjs</h1>
+    <h1 class="page-title">Source: handlers/DisplayPost.mjs</h1>
 
     
 
@@ -26,31 +26,38 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { API_SOCIAL_URL } from "../constants.mjs";
-import * as storage from "../../handlers/storage/index.mjs"
+            <pre class="prettyprint source linenums"><code>import * as postMethods from "../api/posts/index.mjs";
+import { load } from "../handlers/storage/index.mjs";
 
-const action = "/auth/register";
-const method = "post";
+const postContainer = document.querySelector(".post");
 /**
- * sends register info to API. then waiting for response.
- * @param {string} profile from input-fields in form.
- * @returns {Array} the jason response as "result"
+ * Takes an id from the querystring and fetches a single post with the id
  */
-export async function register(profile) {
-    const registerURL = API_SOCIAL_URL + action;
+export async function displayPostListener() {
+  try {
+    const url = new URL(location.href);
+    const id = url.searchParams.get("id");
+    const post = await postMethods.getPost(id);
+    postContainer.innerHTML = `&lt;div class="card mb-3 col-10">
+        &lt;div class="row g-0">
+          &lt;div class="col-md-4">
+            &lt;img src="${post.media}" class="img-fluid rounded-start" alt="profile-picture">
+          &lt;/div>
+          &lt;div class="col-md-8">
+            &lt;div class="card-body">
+              &lt;h2 class="card-title">${post.author.name}&lt;/h2>
+              &lt;h5 class="card-title">${post.title}&lt;/h5>
+              &lt;p class="card-text">${post.body}&lt;/p>
+              &lt;p class="card-text">&lt;small class="text-muted">Last updated ${post.updated}. id: ${post.id}&lt;/small>&lt;/p>
+              &lt;div class="row">
+        &lt;/div>
+      &lt;/div>`;
+  } catch (error) {
+    postContainer.innerHTML = `&lt;h1 class="text-center">Post not found.&lt;/h1>&lt;h1 class="text-center">The ID does not exist.&lt;/h1>`;
 
-    const response = await fetch(registerURL, {
-        headers: {
-            "Content-Type": "application/json"
-        },
-        method,
-        body: JSON.stringify(profile)
-    })
+  }
 
-    const result = await response.json();
-    location.href = `login.html`;
-    return result;
-}</code></pre>
+};</code></pre>
         </article>
     </section>
 
